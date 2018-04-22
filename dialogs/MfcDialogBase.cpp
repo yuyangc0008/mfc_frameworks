@@ -144,7 +144,7 @@ void CMfcDialogBase::AddCtrlProp(eCtrlType nType, const CRect& rcPos, DWORD dwEx
 	prop.dwExStyle = dwExStyle;
 	prop.lpszClassName = lpszClassName;
 	prop.lpszWindowName = lpszWindowName;
-	prop.dwStyle = dwStyle;
+	prop.dwStyle = WS_VISIBLE | WS_CHILD | dwStyle;
 	prop.pParent = pParent;
 	prop.nID = nID;
 	prop.lpParam = lpParam;
