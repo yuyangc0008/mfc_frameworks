@@ -1,4 +1,4 @@
-#ifndef _MFC_DIALOG_BASE_H_V100_YY_
+﻿#ifndef _MFC_DIALOG_BASE_H_V100_YY_
 #define _MFC_DIALOG_BASE_H_V100_YY_
 
 /*
@@ -95,6 +95,7 @@ protected:
 protected:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 
@@ -105,10 +106,13 @@ protected:
 		CWnd* pParent, UINT nID, LPVOID lpParam, CFont* pFont);
 	void AddCtrlPropCustom(const CRect& rcPos, CWnd* pCustomWnd);
 	void RemoveAllCtrls();
+
+	// 子类按需重写
 	virtual void InitDlgFont();
 	virtual void InitCtrlsProp();
 	virtual void CreateCtrls();
 	virtual void SetCtrlsLayout();
+	virtual void DrawUI(CPaintDC &dc, int width, int height);  // 双缓冲，绘制到memDC
 
 protected:
 	HICON                    m_hIcon;
