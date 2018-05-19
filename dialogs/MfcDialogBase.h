@@ -104,6 +104,7 @@ protected:
 	void AddCtrlProp(eCtrlType nType, const CRect& rcPos, DWORD dwExStyle,
 		LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle,
 		CWnd* pParent, UINT nID, LPVOID lpParam, CFont* pFont);
+	// pCustomWnd需要在外部以new Cxxx的方式创建，由本类管理其生命周期。
 	void AddCtrlPropCustom(const CRect& rcPos, CWnd* pCustomWnd);
 	void RemoveAllCtrls();
 
@@ -121,5 +122,8 @@ protected:
 	CArray<CWnd*>            m_DlgCtrls;
 	CRect                    m_DlgRect;
 };
+
+// load resource images
+BOOL LoadImageFromRes(CImage &img, UINT resID, LPCSTR resType);
 
 #endif /* _MFC_DIALOG_BASE_H_V100_YY_ */
